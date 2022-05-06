@@ -15,4 +15,8 @@ public class AppTest {
     public void testApp() {
         assertTrue(true);
     }
+    @Test
+    public void secondTest(){
+        assertFalse(false);
+    }
 }
