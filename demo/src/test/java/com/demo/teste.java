@@ -1,5 +1,6 @@
 package com.demo;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.junit.Test;
 public class teste {
     @Test
     public void test() {
-        boolean val = false;
-        assertTrue(val);
+        boolean val = true;
+        assertFalse(val);
     }
 }
