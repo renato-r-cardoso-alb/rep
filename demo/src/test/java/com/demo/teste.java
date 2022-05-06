@@ -7,7 +7,7 @@ import org.junit.Test;
 public class teste {
     @Test
     public void test() {
-        boolean val = true;
+        boolean val = false;
         assertTrue(val);
     }
 }
