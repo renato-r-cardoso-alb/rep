@@ -1,13 +1,13 @@
 package com.demo;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-public class teste {
+public class testeA {
     @Test
     public void test() {
         boolean val = true;
-        assertTrue(val);
+        assertFalse(val);
     }
 }
