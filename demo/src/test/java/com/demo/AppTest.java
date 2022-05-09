@@ -18,6 +18,6 @@ public class AppTest {
     @Test
     public void secondTest(){
         System.out.println("merge");
-        assertFalse(false);
+        assertFalse(true);
     }
 }
