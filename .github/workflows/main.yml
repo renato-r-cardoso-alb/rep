@@ -32,8 +32,7 @@ jobs:
       
       - name: Package
         run: |
-        mvn test --file "demo/pom.xml"
-        echo "Teste"
+        mvn clean compile package
 
     
   
