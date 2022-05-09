@@ -32,6 +32,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Compile
         run: mvn compile package --file "demo/pom.xml"
+      
+      - name: Verify
+       run: mvn verify --file "demo/pom.xml"
 
     
   
