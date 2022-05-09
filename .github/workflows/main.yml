@@ -28,5 +28,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Testar class
         run: |
-          mvn test --file "demo/pom.xml"
-          echo "Test"
+        mvn test --file "demo/pom.xml"
+        echo "Test"
+      -name: Package
+        run: |
+        mvn test --file "demo/pom.xml"
+
+    
+  
