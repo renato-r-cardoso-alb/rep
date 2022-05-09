@@ -30,6 +30,5 @@ jobs:
         run: |
           mvn test --file "demo/pom.xml"
       -name: Echo
-      - uses: actions/checkout@v3
         run:
-         echo "Test"
+          echo "Test"
