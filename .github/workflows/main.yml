@@ -31,7 +31,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Compile
-        run: mvn clean compile package
+        run: |
+        mvn compile 
+        mvn package
+        echo "Fim"
 
     
   
