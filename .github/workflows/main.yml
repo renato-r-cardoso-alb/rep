@@ -31,4 +31,4 @@ jobs:
           mvn test --file "demo/pom.xml"
       -name: Echo
         run:
-         echo "Teste"
+         echo "Test"
