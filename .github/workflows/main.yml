@@ -30,7 +30,7 @@ jobs:
         run: |
         mvn test --file "demo/pom.xml"
         echo "Test"
-      -name: Package
+      - name: Package
         run: |
         mvn test --file "demo/pom.xml"
 
