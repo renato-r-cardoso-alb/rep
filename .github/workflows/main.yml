@@ -29,3 +29,6 @@ jobs:
       - name: Testar class
         run: |
           mvn test --file "demo/pom.xml"
+      -name: Echo
+        run: |
+         echo "Teste"
