@@ -14,7 +14,7 @@ public class simpleServer {
         context.setHandler(simpleServer::handleRequest);
         server.start();
     }
-    
+
     private static void handleRequest(HttpExchange exchange) throws IOException {
         URI requestURI = exchange.getRequestURI();
         printRequestInfo(exchange);
@@ -24,6 +24,7 @@ public class simpleServer {
         os.write(response.getBytes());
         os.close();
     }
+    
     private static void printRequestInfo(HttpExchange exchange) {
         System.out.println("-- headers --");
         Headers requestHeaders = exchange.getRequestHeaders();
