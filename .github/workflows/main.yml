@@ -36,7 +36,7 @@ jobs:
         run: mvn verify --file "demo/pom.xml"
         
       - name: Imagem
-        run: docker build -t rep:teste .\demo\pom.xml
+        run: docker build -t rep:teste demo
       
       - name: View
         run: docker images
