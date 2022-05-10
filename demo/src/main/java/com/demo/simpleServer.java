@@ -6,12 +6,12 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import com.sun.net.httpserver.*;
 
-public class simpleServer {
+public class SimpleServer {
        
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(8500), 0);
         HttpContext context = server.createContext("/example");
-        context.setHandler(simpleServer::handleRequest);
+        context.setHandler(SimpleServer::handleRequest);
         server.start();
     }
 
