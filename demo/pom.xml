@@ -18,12 +18,12 @@
         </dependency>
     </dependencies>
     <servers>
-    <server>
+        <server>
           <id>github</id>
           <username>${{ github.actor }}</username>
           <password>${{ secrets.GHCR_PAT }}</password>
-      </server>
-  </servers>
+        </server>
+    </servers>
     <build>
         <pluginManagement>
             <plugins>
