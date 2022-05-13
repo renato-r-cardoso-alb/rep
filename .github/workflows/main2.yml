@@ -32,4 +32,6 @@ jobs:
         run: mvn package --file "demo/pom.xml"
       
       - name: deploy
-        run: mvn deploy:deploy -e -DpomFile=\demo\\pom.xml -Dfile=\demo\\target\\demo-1.0-snapshot.jar -DrepositoryId=github -Dpackaging=jar -Durl=https://github.com/renato-r-cardoso-alb/rep Dtoken=GHCR_PAT
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
