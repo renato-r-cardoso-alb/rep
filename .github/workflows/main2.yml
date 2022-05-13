@@ -32,6 +32,6 @@ jobs:
         run: mvn package --file "demo/pom.xml"
       
       - name: deploy
-        run: mvn --batch-mode deploy --file "demo/pom-xml"
+        run: mvn --batch-mode deploy --file "demo/pom.xml"
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
