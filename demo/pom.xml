@@ -17,13 +17,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <servers>
-        <server>
-          <id>github</id>
-          <username>${{ github.actor }}</username>
-          <password>${{ secrets.GHCR_PAT }}</password>
-        </server>
-    </servers>
     <build>
         <pluginManagement>
             <plugins>
