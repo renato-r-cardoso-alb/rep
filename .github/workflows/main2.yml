@@ -37,4 +37,4 @@ jobs:
         -Dfile=\demo\\target\\demo-1.0-SNAPSHOT.jar \
         -DrepositoryId=github \
         -Durl=https://github.com/renato-r-cardoso-alb/rep \
-        -Dpackaging=jar \
+        -Dpackaging=jar
