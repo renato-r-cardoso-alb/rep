@@ -35,4 +35,4 @@ jobs:
         run: mvn deploy:deploy-file --file "demo/pom.xml"
           -Dfile="demo/target/demo-1.0-snapshot.jar" \
           -DrepositoryId=github \
-          -Durl=https://github.com/renato-r-cardoso-alb/rep
+          -Durl="https://github.com/renato-r-cardoso-alb/rep"
