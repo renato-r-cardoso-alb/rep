@@ -33,9 +33,9 @@ jobs:
       
       - name: deploy
         run: mvn deploy:deploy-file \
+          -DpomFile= \demo\\pom.xml \
           -Durl=hhttps://github.com/renato-r-cardoso-alb/rep \
           -DrepositoryId=github-maven \
-          -DpomFile= ./pom.xml \
           -Dfile=target/jar/ID-1.0.0-SNAPSHOT.jar \
           -DgroupId=ID \
           -DartifactId=ID \
