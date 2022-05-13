@@ -32,4 +32,4 @@ jobs:
         run: mvn package --file "demo/pom.xml"
       
       - name: deploy
-        run: mvn deploy:deploy-file --file "demo/pom.xml" -DgroupId=com.demo -DartifactId=demo -Dversion=1.0-snapshot -Dfile="target/demo-1.0-snapshot.jar" -DrepositoryId=github -Durl="https://github.com/renato-r-cardoso-alb/rep" Dtoken=${{ secrets.GHCR_PAT }} 
+        run: mvn deploy:deploy-file --file "demo/pom.xml"
