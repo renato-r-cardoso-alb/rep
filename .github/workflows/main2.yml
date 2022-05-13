@@ -30,6 +30,13 @@ jobs:
 
       - name: Compile
         run: mvn package --file "demo/pom.xml"
+        
+      - name: Login Github
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
       
       - name: deploy
-        run: mvn deploy:deploy-file -DpomFile=\demo\\pom.xml -Dfile=\demo\\target\\demo-1.0-SNAPSHOT.jar -DrepositoryId=github -Durl=https://github.com/renato-r-cardoso-alb/rep/pkgs/container/img -Dpackaging=jar
+        run: mvn deploy:deploy-file -DpomFile=\demo\\pom.xml -Dfile=\demo\\target\\demo-1.0-SNAPSHOT.jar -DrepositoryId=github -Durl=https://github.com/renato-r-cardoso-alb/rep -Dpackaging=jar
