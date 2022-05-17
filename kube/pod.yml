@@ -1,0 +1,22 @@
+---
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: web
+   namespace: default
+ spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: web
+  template:
+    metadata:
+      labels:
+        run: web
+    spec:
+      containers:
+      - name: teste
+        image: renatorcardoso/img:teste
+        ports:
+        - containerPort: 8500
+          protocol: TCP
