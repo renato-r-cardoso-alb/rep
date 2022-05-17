@@ -33,4 +33,4 @@ jobs:
       
       - name: deploy
         #run: mvn deploy:deploy-file --file "demo/pom.xml" -DrepositoryId=github
-        run: mvn "-Drepo.login=${{github.actor}}" "-Drepo.pwd=${{secrets.GITHUB_TOKEN}}" deploy --file "demo/pom.xml" 
+        run: mvn "-Drepo.login=${{github.actor}}" "-Drepo.pwd=${{secrets.GITHUB_TOKEN}}" deploy --file "demo/pom.xml" -s "demo/.m2/settings.xml"
