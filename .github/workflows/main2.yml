@@ -32,4 +32,5 @@ jobs:
         run: mvn package --file "demo/pom.xml"
       
       - name: deploy
-        run: mvn deploy:deploy-file --file "demo/pom.xml" -DrepositoryId=github
+        #run: mvn deploy:deploy-file --file "demo/pom.xml" -DrepositoryId=github
+        run: mvn deploy --file "demo/pom.xml"
