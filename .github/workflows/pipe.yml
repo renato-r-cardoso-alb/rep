@@ -18,6 +18,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Publish package
-        run: mvn deploy --file "demo/pom.xml"
+        run: mvn deploy --file "demo/pom.xml" -s "demo/.m2/settings.xml"
         env:
           GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
