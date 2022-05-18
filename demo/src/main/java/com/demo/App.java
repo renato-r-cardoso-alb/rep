@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.URI;
+
+import javax.sound.sampled.Port;
+
 import com.sun.net.httpserver.*;
 
 public class App {
        
     public static void main(String[] args) throws IOException {
-        HttpServer server = HttpServer.create( );
+        HttpServer server = HttpServer.create(new InetSocketAddress(8500), 0);
         HttpContext context = server.createContext("/example");
         context.setHandler(App::handleRequest);
         server.start();

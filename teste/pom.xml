@@ -4,6 +4,13 @@
     <groupId>com.teste</groupId>
     <artifactId>teste</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>renato-r-cardoso-alb</name>
+          <url>https://maven.pkg.github.com/renato-r-cardoso-alb/rep</url>
+        </repository>
+    </distributionManagement>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -15,6 +22,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>demo</artifactId>
+            <version>1.0-snapshot</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
@@ -34,11 +47,6 @@
                             <groupId>com.github.ngeor</groupId>
                             <artifactId>checkstyle-rules</artifactId>
                             <version>1.1.0</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>com.demo</groupId>
-                            <artifactId>demo</artifactId>
-                            <version>1.0-snapshot</version>
                         </dependency>
                     </dependencies>
                     <configuration>
