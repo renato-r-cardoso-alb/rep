@@ -1,10 +1,12 @@
 package com.teste;
 
+import com.demo.App;
+
 /**
  * Hello world!
  */
-public final class App {
-    private App() {
+public final class Ap {
+    private Ap() {
     }
 
     /**
@@ -13,5 +15,6 @@ public final class App {
      */
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        System.out.println(new App().teste());
     }
 }

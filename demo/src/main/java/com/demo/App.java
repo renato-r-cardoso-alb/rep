@@ -18,6 +18,10 @@ public class App {
         server.start();
     }
 
+    public  String teste(){
+        return "Está a funcionar";
+    }
+
     private static void handleRequest(HttpExchange exchange) throws IOException {
         URI requestURI = exchange.getRequestURI();
         printRequestInfo(exchange);
