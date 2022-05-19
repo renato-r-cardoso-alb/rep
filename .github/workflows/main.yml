@@ -55,5 +55,5 @@ jobs:
       
       - name: Tag and push
         run: |
-          docker tag img:teste renatorcardoso/img:teste
-          docker push renatorcardoso/img:teste
+          docker tag img:teste ghcr.io/renato-r-cardoso-alb/img:teste
+          docker push ghcr.io/renato-r-cardoso-alb/img:teste
