@@ -37,7 +37,7 @@ jobs:
         run:  echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
 
       - name: build and deploy maven artefact
-        run: mvn "-Dpversion=${{github.ref_name}}-r${{ env.REVISION }}"" "-Drepo.login=${{ github.actor }}" "-Drepo.pwd=${{ secrets.GHCR_PAT }}" -e -DskipTests -B deploy --file "demo/pom.xml"
+        run: mvn "-Dpversion=${{github.ref_name}}-r${{ env.REVISION }}" "-Drepo.login=${{ github.actor }}" "-Drepo.pwd=${{ secrets.GHCR_PAT }}" -e -DskipTests -B deploy --file "demo/pom.xml"
         env:
           GITHUB_TOKEN: ${{ github.token }}
       #- name: deploy
