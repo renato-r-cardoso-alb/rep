@@ -27,14 +27,19 @@ jobs:
       deployments: write
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: defined version tag
+        run: |
+          echo ${{github.ref_name}}
+      - name: checkout repository
+        uses: actions/checkout@v2
 
-      - name: Test
-        run: ls
+      - name: set revision
+        run:  echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
 
-      - name: Compile
-        run: mvn package --file "demo/pom.xml"
-      
-      - name: deploy
+      - name: build and deploy maven artefact
+        run: mvn "-Dpversion=${{github.ref_name}}-r${{ env.REVISION }}"" "-Drepo.login=${{ github.actor }}" "-Drepo.pwd=${{ secrets.GHCR_PAT }}" -e -DskipTests -B deploy --file "demo/pom.xml"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      #- name: deploy
         #run: mvn deploy:deploy-file --file "demo/pom.xml" -DrepositoryId=github
-        run: mvn "-Drepo.login=${{github.actor}}" "-Drepo.pwd=${{ secrets.GHCR_PAT }}" deploy -e --file "demo/pom.xml"
+      #  run: mvn -Dproject.version=${{github.ref_name}} "-Drepo.login=${{github.actor}}" "-Drepo.pwd=${{ secrets.GHCR_PAT }}" deploy -e --file "demo/pom.xml"
