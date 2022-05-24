@@ -24,7 +24,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-
+      deployments: write
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
