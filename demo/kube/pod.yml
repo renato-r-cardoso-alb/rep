@@ -16,7 +16,7 @@
     spec:
       containers:
       - name: teste
-        image: renatorcardoso/img:teste
+        image: ghcr.io/renato-r-cardoso-alb/rep/img:teste
         ports:
         - containerPort: 8500
           protocol: TCP

@@ -57,5 +57,3 @@ jobs:
         run: |
           docker tag img:teste ghcr.io/renato-r-cardoso-alb/img:teste
           docker push ghcr.io/renato-r-cardoso-alb/img:teste
-    #docker login ghcr.io -u renato-r-cardoso-alb -p token
-    #docker pull ghcr.io/renato-r-cardoso-alb/img:teste
