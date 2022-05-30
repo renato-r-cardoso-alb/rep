@@ -46,6 +46,6 @@ jobs:
 
       - name: run environment variables
         run: |
-          curl "$(minikube service sbi-server --url )/example"
+          curl $(minikube service sbi-server --url)/example
         #  echo "${{ env.GIT_IP }}:${{ env.GIT_PORT }}"
         #  curl "http://${{ env.GIT_IP }}:${{ env.GIT_PORT }}/"
