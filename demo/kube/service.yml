@@ -1,20 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web
+  name: web-service
 spec:
-  externalIPs:
-  - 192.168.132.253
-  externalTrafficPolicy: Cluster
-  ports:
-    - protocol: TCP
-      port: 8500
-      targetPort: 8500
   selector:
-    run: web
-  sessionAffinity: None
+    app: web
+  ports:
+    - port: 8500
+      targetPort: 8500
   type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.168.132.253

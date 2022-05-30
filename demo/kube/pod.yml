@@ -2,21 +2,33 @@
  apiVersion: apps/v1
  kind: Deployment
  metadata:
-   name: web
-   namespace: default
+   name: web-deploy
  spec:
   replicas: 1
   selector:
     matchLabels:
-      run: web
+      app: web
   template:
     metadata:
       labels:
-        run: web
+        app: web
     spec:
       containers:
       - name: teste
-        image: ghcr.io/renato-r-cardoso-alb/rep/img:teste
+        imagePullPolicy: Always
+        image: ghcr.io/renato-r-cardoso-alb/img:teste
         ports:
         - containerPort: 8500
           protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: web-deploy
+spec:
+    type: NodePort
+    selector:
+        app: web
+    ports:
+        - port: 8500
+          targetPort: 8500

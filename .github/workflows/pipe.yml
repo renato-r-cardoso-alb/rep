@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Minikube Deployment
+
+on:
+
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: start K8s DEV cluster
+        uses: medyagh/setup-minikube@master
+
+      - name: Minikube env  
+        run: eval $(minikube -p minikube docker-env)
+      
+      - name: Apply namespace
+        run: |
+          kubectl apply -f demo/kube/dockerconfigjson.yml
+          kubectl apply -f demo/kube/pod.yml
+
+      #- name: Create tunnel service
+      #  run:  minikube service sbi-server --url 
+      
+      - name: sleep to be ready
+        run: kubectl rollout status deployment/web-deploy
+
+      - name: set environment variables
+        run: |
+          kubectl describe pods,svc,ingress
+
+      - name: run environment variables
+        run: |
+          curl "$(minikube service sbi-server --url )/example"
+        #  echo "${{ env.GIT_IP }}:${{ env.GIT_PORT }}"
+        #  curl "http://${{ env.GIT_IP }}:${{ env.GIT_PORT }}/"
