@@ -31,7 +31,7 @@ jobs:
       
       - name: Apply namespace
         run: |
-          kubectl apply -f demo/kube/dockerconfigjson.yml
+          kubectl apply -f demo/kube/dockerconf.yml
           kubectl apply -f demo/kube/pod.yml
 
       #- name: Create tunnel service
