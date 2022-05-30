@@ -26,7 +26,7 @@ kind: Service
 metadata:
     name: web-deploy
 spec:
-    type: NodePort
+    type: LoadBlancer
     selector:
         app: web
     ports:
