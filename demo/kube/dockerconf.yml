@@ -2,7 +2,7 @@ kind: Secret
 type: kubernetes.io/dockerconfigjson
 apiVersion: v1
 metadata:
-  name: conf
+  name: conf2
   labels:
     app: app-name
 data:
