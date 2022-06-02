@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "TESTFILE=${${{github.ref_name}} ##-}" >> $GITHUB_ENV
+        run: echo "TESTFILE=${${{github.ref_name}}##enh-}" >> $GITHUB_ENV
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
