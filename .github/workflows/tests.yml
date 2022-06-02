@@ -31,4 +31,4 @@ jobs:
       - name: Run a one-line script
         run: |
           echo ${{ env.TESTFILE }}##*enh-
-          echo ${GITHUB_REF##*/}
+          echo ${GITHUB_REF##*enh/}*
