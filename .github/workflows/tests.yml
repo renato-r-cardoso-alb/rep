@@ -25,10 +25,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "TESTFILE=${{github.ref_name}}" >> $GITHUB_ENV
+        run: echo "TESTFILE=${GITHUB_REF##*enh-}*Tests" >> $GITHUB_ENV
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo ${{ env.TESTFILE }}##*enh-
+          echo ${{ env.TESTFILE }}
           echo "${GITHUB_REF##*enh-}*Tests"
