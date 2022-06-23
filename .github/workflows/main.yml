@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Test
-        run: startsWith(${{github.head_ref}}, 'v')
+        run: startsWith(GITHUB_HEAD_REF, 'v')
 
       - name: Compile
         run: mvn package --file "demo/pom.xml"
