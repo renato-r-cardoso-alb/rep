@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: renato-r-cardoso-alb/rep
-          ref: enh-8
+          ref: enh-812
           path: rep
 
       - name: list
