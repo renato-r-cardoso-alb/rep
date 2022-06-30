@@ -28,7 +28,7 @@ jobs:
     name: Candidate Pipeline
     runs-on: ubuntu-latest
     needs: reset_patch_candidate
-    if: success() || (needs.reset_patch_candidate.result == 'skipped') &&  ${{startsWith(github.ref_name, 'v') }}
+    if: success() || (needs.reset_patch_candidate.result == 'skipped') &&  ${{ startsWith(github.ref_name, 'v') }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
