@@ -41,3 +41,5 @@ jobs:
         with:
             file-path: repVer.json
             commit-msg: Update version file
+            branch: ${{github.ref_name}}
+
