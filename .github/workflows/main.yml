@@ -36,10 +36,11 @@ jobs:
       - name: set variables
         run: echo  "`jq '.repName |= .+ [ {"SBI":"v3.0"} ]' repVer.json`" > repVer.json
         
-      - name: Create commit for updated repositoriesDispach
+      - name: Create commit
         uses: test-room-7/action-update-file@v1
         with:
-            file-path: repVer.json
+            file-path: config/versioning.json
             commit-msg: Update version file
+            github-token: ${{ secrets.GIT_TOKEN }}
             branch: ${{github.ref_name}}
 
