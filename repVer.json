@@ -1,3 +1,8 @@
 {
-    "repVer": [ ]
+  "repVer": [],
+  "repName": [
+    {
+      "SBI": "v3.0"
+    }
+  ]
 }
