@@ -39,7 +39,7 @@ jobs:
       - name: Create commit
         uses: test-room-7/action-update-file@v1
         with:
-            file-path: config/versioning.json
+            file-path: repVer.json
             commit-msg: Update version file
             github-token: ${{ secrets.GIT_TOKEN }}
             branch: ${{github.ref_name}}
