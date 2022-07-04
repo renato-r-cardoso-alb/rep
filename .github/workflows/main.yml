@@ -5,14 +5,9 @@ name: Primeira pipeline
 # Controls when the workflow will run
 on:
   push:
-    branches: [ v* ]
+    branches: [ main ]
     paths-ignore: 
       - repVer.json
-  create:
-    branches: [ v* ]
-    paths-ignore: 
-      - repVer.json
-
 jobs:
   reset_patch_candidate:
     name: Reset Patch and Candidate Variables
