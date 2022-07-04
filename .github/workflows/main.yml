@@ -19,7 +19,6 @@ jobs:
       - name: Update JSON patch
         run: echo cheguei1
 
-
   candidate_pipe:
     name: Candidate Pipeline
     runs-on: ubuntu-latest
