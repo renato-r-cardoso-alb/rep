@@ -7,17 +7,17 @@ on:
   push:
     branches: [ v* ]
     paths-ignore: 
-      - config/* 
+      - repVer.json
   create:
     branches: [ v* ]
     paths-ignore: 
-      - config/* 
+      - repVer.json
 
 jobs:
   reset_patch_candidate:
     name: Reset Patch and Candidate Variables
     runs-on: ubuntu-latest
-    if: ${{ (github.event_name == 'create' && startsWith(github.ref_name, 'v')) }}
+    #if: ${{ (github.event_name == 'create' && startsWith(github.ref_name, 'v')) }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
     name: Candidate Pipeline
     runs-on: ubuntu-latest
     needs: reset_patch_candidate
-    if: success() || (needs.reset_patch_candidate.result == 'skipped') &&  ${{ startsWith(github.ref_name, 'v') }}
+    #if: success() || (needs.reset_patch_candidate.result == 'skipped') &&  ${{ startsWith(github.ref_name, 'v') }}
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
@@ -39,4 +39,10 @@ jobs:
           cache: 'maven'
   
       - name: set variables
-        run:  echo cheguei2
+        run: echo  "`jq '.repName |= .+ ["SBI":"v3.0"]' repVer.json`" > repVer.json
+        
+      - name: Create commit for updated repositoriesDispach
+        uses: test-room-7/action-update-file@v1
+        with:
+            file-path: repVer.json
+            commit-msg: Update version file
