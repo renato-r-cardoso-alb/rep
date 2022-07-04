@@ -34,7 +34,7 @@ jobs:
           cache: 'maven'
   
       - name: set variables
-        run: echo  "`jq '.repName |= .+ [ {"SBI":"v3.0"} ]' repVer.json`" > repVer.json
+        run: echo  "`jq '.repVer |= .+ [ {"SBI":"v3.0"} ]' repVer.json`" > repVer.json
         
       - name: Create commit
         uses: test-room-7/action-update-file@v1
