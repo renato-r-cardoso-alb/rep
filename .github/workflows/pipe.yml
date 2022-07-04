@@ -26,13 +26,13 @@ jobs:
           cache: 'maven'
 
       - name: set variables for enh
-        if: ${{ startsWith(github.ref_name, 'enh')) }}
+        if: ${{ startsWith(github.ref_name, 'enh') }}
         run: |
           echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
           echo "TESTFILE=${GITHUB_REF_NAME##*enh-}Test" >> $GITHUB_ENV
 
       - name: set variables for bug
-        if: ${{ startsWith(github.ref_name, 'bug')) }}
+        if: ${{ startsWith(github.ref_name, 'bug') }}
         run: |
           echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
           echo "TESTFILE=${GITHUB_REF_NAME##*bug-}Test" >> $GITHUB_ENV
