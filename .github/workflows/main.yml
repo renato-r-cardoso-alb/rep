@@ -21,6 +21,6 @@ jobs:
 
       - name: Test
         run: | 
-        curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
-        mvn test --file "demo/pom.xml"
+          curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+          mvn test --file "demo/pom.xml"
 
