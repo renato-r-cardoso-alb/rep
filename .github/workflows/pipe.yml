@@ -3,50 +3,39 @@
 name: Minikube Deployment
 
 on:
-
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ enh-*, bug-*]
 
-  workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+
+##################################################################################################################
+
+  dev_pipe_test:
+    name: SBI Unit Tests
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      - name: start K8s DEV cluster
-        uses: medyagh/setup-minikube@master
+      - name: checkout repository
+        uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
 
-      - name: Minikube env  
-        run: eval $(minikube -p minikube docker-env)
-      
-      - name: Apply namespace
+      - name: set variables for enh
+        if: ${{ startsWith(github.ref_name, 'enh') }}
         run: |
-          kubectl apply -f demo/kube/dockerconf.yml
-          kubectl apply -f demo/kube/pod.yml
+          echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
+          echo "TESTFILE=${GITHUB_REF_NAME##*enh-}Test" >> $GITHUB_ENV
 
-      #- name: Create tunnel service
-      #  run:  minikube service sbi-server --url 
-      
-      - name: sleep to be ready
-        run: kubectl rollout status deployment/web-deploy
-
-      - name: set environment variables
+      - name: set variables for bug
+        if: ${{ startsWith(github.ref_name, 'bug') }}
         run: |
-          kubectl describe pods,svc,ingress
-
-      - name: run environment variables
-        run: |
-          minikube service web-deploy --url
-          curl $(minikube service web-deploy --url)/example
-        #  echo "${{ env.GIT_IP }}:${{ env.GIT_PORT }}"
-        #  curl "http://${{ env.GIT_IP }}:${{ env.GIT_PORT }}/"
+          echo "REVISION=$(date '+%Y%m%d%H%M')" >> $GITHUB_ENV
+          echo "TESTFILE=${GITHUB_REF_NAME##*bug-}Test" >> $GITHUB_ENV
+          
+      - name: echo
+        run: echo ${{ env.TESTFILE }}

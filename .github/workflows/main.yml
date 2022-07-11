@@ -4,60 +4,23 @@ name: Primeira pipeline
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    paths-ignore: 
+      - repVer.json
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  reset_patch_candidate:
+    name: Reset Patch and Candidate Variables
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    #if: ${{ (github.event_name == 'create' && startsWith(github.ref_name, 'v')) }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: checkout repository
+        uses: actions/checkout@v3
+      - name: Update JSON patch
+        run: echo cheguei1
 
       - name: Test
         run: | 
         curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
         mvn test --file "demo/pom.xml"
 
-      - name: Compile
-        run: mvn package --file "demo/pom.xml"
-      
-      - name: Verify
-        run: mvn verify --file "demo/pom.xml"
-        
-      - name: Login Docker
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-        
-      - name: Login Github
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT}}
-      
-      - name: Imagem
-        run: docker build -t img:teste demo
-      
-      - name: View
-        run: docker images
-      
-      - name: Tag and push
-        run: |
-          docker tag img:teste ghcr.io/renato-r-cardoso-alb/img:teste
-          docker push ghcr.io/renato-r-cardoso-alb/img:teste
-    #docker login ghcr.io -u renato-r-cardoso-alb -p token
-    #docker pull ghcr.io/renato-r-cardoso-alb/img:teste
