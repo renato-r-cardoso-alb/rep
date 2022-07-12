@@ -13,6 +13,9 @@ on:
     branches: [ v* ]
     paths-ignore: 
       - repVer.json
+env: # 'env': optional, defines varibles of the workflow
+  SKIP: needs.reset_patch_candidate.result == 'skipped'
+  
 jobs:
   reset_patch_candidate:
     name: Reset Patch and Candidate Variables
@@ -29,7 +32,7 @@ jobs:
     name: Candidate Pipeline
     runs-on: ubuntu-latest
     needs: reset_patch_candidate
-    if: success() || ${{startsWith(github.ref_name, 'v')}} && needs.reset_patch_candidate.result == 'skipped'
+    if: success() || ${{ env.SKIP && startsWith(github.ref_name, 'v') }} 
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
