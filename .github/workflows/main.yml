@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "REP=$(jq '.repVer.SBI | contains( "v2.0" )' repVer.json )" >> $GITHUB_ENV
           echo "REP1=$(jq -r '.repVer.SBI' repVer.json)" >> $GITHUB_ENV
-          echo "REP2=$(jq '.repVer | contains( "SBI" )' repVer.json )" >> $GITHUB_ENV
+          echo "REP2=$(jq '.repVer | contains( "SBI":"v2.0" )' repVer.json )" >> $GITHUB_ENV
 
       - name: Test
         run: | 
