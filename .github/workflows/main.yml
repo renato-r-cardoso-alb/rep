@@ -15,7 +15,6 @@ on:
       - repVer.json
 env: # 'env': optional, defines varibles of the workflow
   SKIP: needs.reset_patch_candidate.result
-  
 jobs:
   reset_patch_candidate:
     name: Reset Patch and Candidate Variables
