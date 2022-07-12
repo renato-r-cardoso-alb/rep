@@ -3,9 +3,14 @@
 name: Primeira pipeline
 
 # Controls when the workflow will run
+
 on:
   push:
-    branches: [ main ]
+    branches: [ v* ]
+    paths-ignore: 
+      - repVer.json
+  create:
+    branches: [ v* ]
     paths-ignore: 
       - repVer.json
 jobs:
