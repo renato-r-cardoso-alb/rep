@@ -18,11 +18,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Update JSON patch
         run: echo cheguei1
-      - name: Define Variables # "name": optional, the name of the step
-        run: echo "IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/')" >> $GITHUB_ENV
+        
+      - name: set var
+        run: |
+          echo "REP=$(jq '.repName | contains( {"SBI": "v2.0"} )' repVer.json )" >> $GITHUB_ENV
+          echo "REP2=$(jq '.repName | contains( {"SBI"} )' repVer.json )" >> $GITHUB_ENV
 
       - name: Test
         run: | 
-          echo ${{ env.IP }}
-          mvn test --file "demo/pom.xml"
+          echo ${{ env.REP }}
+          echo ${{ env.REP2 }}
 
