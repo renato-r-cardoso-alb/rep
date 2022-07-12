@@ -40,5 +40,5 @@ jobs:
           cache: 'maven'
   
       - name: set variables
-        run: echo startsWith(${{github.ref_name}}, 'v')
+        run: echo startsWith('v2.0', 'v')
         
